@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Favourite Person ❤️</title>
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- Background -->
+    <div class="stars"></div>
+    <div class="cursor-glow"></div>
+
+    <!-- ========================= -->
+    <!-- OPENING SCREEN -->
+    <!-- ========================= -->
+
+    <section id="intro" class="screen active">
+
+        <div class="intro-content">
+
+            <p class="eyebrow">
+                A LITTLE SOMETHING FOR YOU...
+            </p>
+
+            <h1>
+                For My Favourite Person
+                <span>❤️</span>
+            </h1>
+
+            <p class="subtitle">
+                I made something just for you.
+            </p>
+
+            <button id="giftButton" class="gift-button">
+                <span>Open Your Birthday Gift</span>
+                <span class="gift-icon">🎁</span>
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- BIRTHDAY COUNTDOWN -->
+    <!-- ========================= -->
+
+    <section id="birthday" class="screen birthday-screen">
+
+        <div class="birthday-content">
+
+            <p class="eyebrow">
+                BEFORE YOUR DAY ARRIVES...
+            </p>
+
+            <h2>
+                Something is waiting for you.
+            </h2>
+
+            <p class="birthday-message">
+                Because I couldn't just say
+                "Happy Birthday" and leave it at that.
+            </p>
+
+            <div class="countdown">
+
+                <div class="time-box">
+                    <span id="days">00</span>
+                    <small>DAYS</small>
+                </div>
+
+                <div class="colon">:</div>
+
+                <div class="time-box">
+                    <span id="hours">00</span>
+                    <small>HOURS</small>
+                </div>
+
+                <div class="colon">:</div>
+
+                <div class="time-box">
+                    <span id="minutes">00</span>
+                    <small>MINUTES</small>
+                </div>
+
+                <div class="colon">:</div>
+
+                <div class="time-box">
+                    <span id="seconds">00</span>
+                    <small>SECONDS</small>
+                </div>
+
+            </div>
+
+            <p id="birthdayStatus" class="birthday-status">
+                Your birthday is almost here... ❤️
+            </p>
+
+            <button id="continueButton" class="continue-button">
+                Continue →
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
