@@ -4,6 +4,15 @@
 
 const intro = document.getElementById("intro");
 const birthday = document.getElementById("birthday");
+const letter = document.getElementById("letter");
+const openLetterButton =
+    document.getElementById("openLetterButton");
+
+const envelope =
+    document.getElementById("envelope");
+
+const letterText =
+    document.getElementById("letterText");
 
 const giftButton = document.getElementById("giftButton");
 
@@ -156,10 +165,38 @@ setInterval(
 /* CONTINUE */
 /* ========================= */
 
+/* ========================= */
+/* CONTINUE → LETTER */
+/* ========================= */
+
 continueButton.addEventListener("click", () => {
 
-    alert(
-        "This is only the beginning... ❤️"
-    );
+    birthday.classList.remove("active");
+
+    setTimeout(() => {
+
+        letter.classList.add("active");
+
+    }, 700);
+
+});
+
+
+/* ========================= */
+/* OPEN LETTER */
+/* ========================= */
+
+openLetterButton.addEventListener("click", () => {
+
+    envelope.classList.add("open");
+
+    openLetterButton.style.opacity = "0";
+    openLetterButton.style.pointerEvents = "none";
+
+    setTimeout(() => {
+
+        letterText.classList.add("visible");
+
+    }, 900);
 
 });

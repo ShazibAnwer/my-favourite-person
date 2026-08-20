@@ -515,3 +515,222 @@ h2 {
     }
 
 }
+/* ========================= */
+/* LETTER SCREEN */
+/* ========================= */
+
+.letter-content {
+    max-width: 800px;
+    position: relative;
+    z-index: 5;
+}
+
+.letter-content h2 {
+    margin-bottom: 45px;
+}
+
+.letter-content h2 span {
+    color: rgba(255, 130, 170, 0.9);
+}
+
+
+/* ========================= */
+/* ENVELOPE */
+/* ========================= */
+
+.envelope {
+    width: 280px;
+    height: 180px;
+    margin: 0 auto 30px;
+
+    position: relative;
+
+    cursor: pointer;
+
+    perspective: 1000px;
+
+    filter:
+        drop-shadow(
+            0 20px 50px rgba(255, 70, 130, 0.15)
+        );
+
+    transition: transform 0.5s ease;
+}
+
+.envelope:hover {
+    transform: translateY(-8px);
+}
+
+
+.envelope-body {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            145deg,
+            #171717,
+            #0c0c0c
+        );
+
+    border:
+        1px solid rgba(255, 255, 255, 0.18);
+
+    border-radius: 4px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 2;
+}
+
+
+.envelope-body p {
+    margin-top: 12px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 20px;
+
+    color:
+        rgba(255, 255, 255, 0.75);
+}
+
+
+.envelope-heart {
+    font-size: 32px;
+
+    animation:
+        heartbeat 2s infinite;
+}
+
+
+/* ========================= */
+/* ENVELOPE FLAP */
+/* ========================= */
+
+.envelope-flap {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left:
+        140px solid transparent;
+
+    border-right:
+        140px solid transparent;
+
+    border-top:
+        95px solid #242424;
+
+    transform-origin: top center;
+
+    transition:
+        transform 0.9s ease;
+
+    z-index: 4;
+}
+
+
+.envelope.open .envelope-flap {
+    transform:
+        rotateX(180deg);
+}
+
+
+/* ========================= */
+/* LETTER TEXT */
+/* ========================= */
+
+.letter-text {
+
+    max-width: 600px;
+
+    margin: 30px auto 0;
+
+    opacity: 0;
+
+    transform:
+        translateY(25px);
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease;
+
+    pointer-events: none;
+}
+
+
+.letter-text.visible {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+    pointer-events: auto;
+}
+
+
+.letter-text p {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 22px;
+
+    line-height: 1.8;
+
+    color:
+        rgba(255, 255, 255, 0.82);
+
+    margin-bottom: 25px;
+}
+
+
+.letter-signature {
+
+    color:
+        rgba(255, 130, 170, 0.9);
+
+    font-size: 20px !important;
+}
+
+
+/* ========================= */
+/* MOBILE LETTER */
+/* ========================= */
+
+@media (max-width: 600px) {
+
+    .letter-content h2 {
+        font-size: 42px;
+    }
+
+    .envelope {
+        width: 240px;
+        height: 155px;
+    }
+
+    .envelope-flap {
+        border-left-width: 120px;
+        border-right-width: 120px;
+        border-top-width: 80px;
+    }
+
+    .letter-text p {
+        font-size: 19px;
+    }
+
+}
