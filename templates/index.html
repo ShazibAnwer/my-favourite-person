@@ -13,14 +13,18 @@
 
 <body>
 
-    <!-- Background -->
+
+    <!-- =========================================================
+         BACKGROUND
+         ========================================================= -->
+
     <div class="stars"></div>
     <div class="cursor-glow"></div>
 
 
-    <!-- ========================= -->
-    <!-- OPENING SCREEN -->
-    <!-- ========================= -->
+    <!-- =========================================================
+         OPENING SCREEN
+         ========================================================= -->
 
     <section id="intro" class="screen active">
 
@@ -40,8 +44,15 @@
             </p>
 
             <button id="giftButton" class="gift-button">
-                <span>Open Your Birthday Gift</span>
-                <span class="gift-icon">🎁</span>
+
+                <span>
+                    Open Your Birthday Gift
+                </span>
+
+                <span class="gift-icon">
+                    🎁
+                </span>
+
             </button>
 
         </div>
@@ -49,63 +60,63 @@
     </section>
 
 
-    <!-- ========================= -->
-    <!-- BIRTHDAY COUNTDOWN -->
-    <!-- ========================= -->
+    <!-- =========================================================
+         BIRTHDAY REVEAL
+         ========================================================= -->
 
-    <section id="birthday" class="screen birthday-screen">
+    <section id="birthday"
+        class="screen birthday-screen">
 
         <div class="birthday-content">
 
             <p class="eyebrow">
-                BEFORE YOUR DAY ARRIVES...
+                TODAY IS YOUR DAY...
             </p>
 
-            <h2>
-                Something is waiting for you.
-            </h2>
+            <div class="birthday-reveal">
 
-            <p class="birthday-message">
-                Because I couldn't just say
-                "Happy Birthday" and leave it at that.
-            </p>
+                <div class="party-poppers">
 
-            <div class="countdown">
+                    <span>🎉</span>
+                    <span>🎊</span>
+                    <span>✨</span>
+                    <span>💗</span>
+                    <span>🎉</span>
 
-                <div class="time-box">
-                    <span id="days">00</span>
-                    <small>DAYS</small>
                 </div>
 
-                <div class="colon">:</div>
+                <h2 class="birthday-title">
 
-                <div class="time-box">
-                    <span id="hours">00</span>
-                    <small>HOURS</small>
-                </div>
+                    HAPPY BIRTHDAY<br>
 
-                <div class="colon">:</div>
+                    <span>
+                        NISHII 💗
+                    </span>
 
-                <div class="time-box">
-                    <span id="minutes">00</span>
-                    <small>MINUTES</small>
-                </div>
+                </h2>
 
-                <div class="colon">:</div>
+                <p class="birthday-love">
+                    Today is all about you — and I hope you
+                    realize just how special you are to me.
+                </p>
 
-                <div class="time-box">
-                    <span id="seconds">00</span>
-                    <small>SECONDS</small>
-                </div>
+                <p class="birthday-love">
+                    You deserve all the happiness, love,
+                    and little moments that make your heart smile.
+                </p>
+
+                <p class="birthday-love">
+                    I'm really glad that somewhere along the way,
+                    you became someone so precious to me. ❤️
+                </p>
 
             </div>
 
-            <p id="birthdayStatus" class="birthday-status">
-                Your birthday is almost here... ❤️
-            </p>
+            <button id="continueButton"
+                class="continue-button">
 
-            <button id="continueButton" class="continue-button">
                 Continue →
+
             </button>
 
         </div>
@@ -113,11 +124,12 @@
     </section>
 
 
-    <!-- ========================= -->
-    <!-- LETTER SCREEN -->
-    <!-- ========================= -->
+    <!-- =========================================================
+         LETTER SCREEN
+         ========================================================= -->
 
-    <section id="letter" class="screen letter-screen">
+    <section id="letter"
+        class="screen letter-screen">
 
         <div class="letter-content">
 
@@ -126,11 +138,20 @@
             </p>
 
             <h2>
+
                 A little letter,
-                <span>just for you.</span>
+
+                <span>
+                    just for you.
+                </span>
+
             </h2>
 
-            <div id="envelope" class="envelope">
+
+            <!-- ENVELOPE -->
+
+            <div id="envelope"
+                class="envelope">
 
                 <div class="envelope-flap"></div>
 
@@ -140,17 +161,29 @@
                         ❤️
                     </div>
 
-                    <p>For You</p>
+                    <p>
+                        For You
+                    </p>
 
                 </div>
 
             </div>
 
-            <button id="openLetterButton" class="continue-button">
+
+            <!-- OPEN LETTER BUTTON -->
+
+            <button id="openLetterButton"
+                class="continue-button">
+
                 Open it ❤️
+
             </button>
 
-            <div id="letterText" class="letter-text">
+
+            <!-- LETTER CONTENT -->
+
+            <div id="letterText"
+                class="letter-text">
 
                 <p>
                     Before you read this...
@@ -170,6 +203,13 @@
                     — Someone who thinks you're pretty special ❤️
                 </p>
 
+                <button id="letterContinueButton"
+                    class="continue-button">
+
+                    There is something else → ❤️
+
+                </button>
+
             </div>
 
         </div>
@@ -177,11 +217,972 @@
     </section>
 
 
-    <!-- ========================= -->
-    <!-- JAVASCRIPT -->
-    <!-- ========================= -->
+    <!-- =========================================================
+         22 THINGS SCREEN
+         ========================================================= -->
+
+    <section id="things"
+        class="screen things-screen">
+
+        <div class="things-content">
+
+            <p class="eyebrow">
+                FOR YOUR 22ND BIRTHDAY...
+            </p>
+
+            <h2 class="things-heading">
+
+                22 things
+
+                <span>
+                    I love about you. ❤️
+                </span>
+
+            </h2>
+
+            <p class="things-intro">
+
+                Because you're turning 22,
+                I thought I'd give you 22 little reasons
+                why you're so special to me.
+
+            </p>
+
+
+            <!-- HEART CARD -->
+
+            <div class="heart-card-area">
+
+                <div id="heartCard"
+                    class="heart-card">
+
+                    <div class="heart-card-inner">
+
+                        <!-- FRONT -->
+
+                        <div class="heart-card-front">
+
+                            <span class="heart-number">
+                                01
+                            </span>
+
+                            <span class="heart-symbol">
+                                ♥
+                            </span>
+
+                            <p>
+                                Tap to reveal
+                            </p>
+
+                        </div>
+
+
+                        <!-- BACK -->
+
+                        <div class="heart-card-back">
+
+                            <span id="thingNumber"
+                                class="thing-number">
+
+                                01 / 22
+
+                            </span>
+
+                            <p id="thingText"
+                                class="thing-text">
+
+                                The way you randomly
+                                call me by my name.
+
+                            </p>
+
+                            <span class="heart-small">
+                                ♥
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- NEXT THING -->
+
+            <button id="nextThingButton"
+                class="continue-button">
+
+                One more →
+
+            </button>
+
+
+            <!-- COMPLETION -->
+
+            <div id="thingsComplete"
+                class="things-complete">
+
+                <p>
+                    22 things...
+                </p>
+
+                <h3>
+
+                    And somehow, there are still
+                    so many more. ❤️
+
+                </h3>
+
+                <button id="thingsContinueButton"
+                    class="continue-button">
+
+                    Now for the memories →
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         PHOTO MEMORIES
+         ========================================================= -->
+
+    <section id="memories"
+        class="screen memories-screen">
+
+        <div class="memories-content">
+
+
+            <!-- =================================================
+                 MEMORIES INTRO
+                 ================================================= -->
+
+            <div class="memories-intro">
+
+                <p class="eyebrow">
+                    LITTLE MOMENTS
+                </p>
+
+                <h2 class="memories-heading">
+
+                    A little
+
+                    <span>
+                        piece of you. ❤️
+                    </span>
+
+                </h2>
+
+                <p class="memories-subtitle">
+
+                    Some moments are too beautiful to be forgotten.
+                    So I kept a few of them here.
+
+                </p>
+
+            </div>
+
+
+            <!-- =================================================
+                 CHAPTER 01 — HER
+                 ================================================= -->
+
+            <div class="memory-chapter">
+
+                <div class="memory-chapter-heading">
+
+                    <span class="memory-chapter-number">
+                        01
+                    </span>
+
+                    <div>
+
+                        <p class="memory-chapter-label">
+                            JUST YOU
+                        </p>
+
+                        <h3>
+                            The girl I adore. ❤️
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     HER PHOTO GALLERY — 10 PHOTOS
+                     ================================================= -->
+
+                <div class="memory-gallery memory-gallery-her">
+
+
+                    <!-- MEMORY 01 -->
+
+                    <article class="memory-card memory-card-large">
+
+                        <div class="memory-image">
+
+                            <img
+                                src="{{ url_for('static', filename='images/memory-01.jpg') }}"
+                                alt="A beautiful memory of her"
+                                loading="lazy"
+                            >
+
+                            <div class="memory-overlay"></div>
+
+                            <span class="memory-number">
+                                01
+                            </span>
+
+                        </div>
+
+                        <div class="memory-info">
+
+                            <span class="memory-date">
+                                A little moment
+                            </span>
+
+                            <h3>
+                                One of my favourite views. ❤️
+                            </h3>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- MEMORY 02 -->
+
+                    <article class="memory-card">
+
+                        <div class="memory-image">
+
+                            <img
+                                src="{{ url_for('static', filename='images/memory-02.jpg') }}"
+                                alt="A beautiful memory of her"
+                                loading="lazy"
+                            >
+
+                            <div class="memory-overlay"></div>
+
+                            <span class="memory-number">
+                                02
+                            </span>
+
+                        </div>
+
+                        <div class="memory-info">
+
+                            <span class="memory-date">
+                                One of my favourites
+                            </span>
+
+                            <h3>
+                                That smile. ❤️
+                            </h3>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- MEMORY 03 -->
+
+                    <article class="memory-card">
+
+                        <div class="memory-image">
+
+                            <img
+                                src="{{ url_for('static', filename='images/memory-03.jpg') }}"
+                                alt="A beautiful memory of her"
+                                loading="lazy"
+                            >
+
+                            <div class="memory-overlay"></div>
+
+                            <span class="memory-number">
+                                03
+                            </span>
+
+                        </div>
+
+                        <div class="memory-info">
+
+                            <span class="memory-date">
+                                A moment worth keeping
+                            </span>
+
+                            <h3>
+                                You, being you.
+                            </h3>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- MEMORY 04 -->
+
+                    <article class="memory-card memory-card-large">
+
+                        <div class="memory-image">
+
+                            <img
+                                src="{{ url_for('static', filename='images/memory-04.jpg') }}"
+                                alt="A beautiful memory of her"
+                                loading="lazy"
+                            >
+
+                            <div class="memory-overlay"></div>
+
+                            <span class="memory-number">
+                                04
+                            </span>
+
+                        </div>
+
+                        <div class="memory-info">
+
+                            <span class="memory-date">
+                                Another little memory
+                            </span>
+
+                            <h3>
+                                I could look at this forever.
+                            </h3>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- MEMORY 05 -->
+
+                    <article class="memory-card">
+
+                        <div class="memory-image">
+
+                            <img
+                                src="{{ url_for('static', filename='images/memory-05.jpg') }}"
+                                alt="A beautiful memory of her"
+                                loading="lazy"
+                            >
+
+                            <div class="memory-overlay"></div>
+
+                            <span class="memory-number">
+                                05
+                            </span>
+
+                        </div>
+
+                        <div class="memory-info">
+
+                            <span class="memory-date">
+                                A little piece of you
+                            </span>
+
+                            <h3>
+                                Simply beautiful.
+                            </h3>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- MEMORY 06 -->
+
+                    <article class="memory-card">
+
+                        <div class="memory-image">
+
+                            <img
+                                src="{{ url_for('static', filename='images/memory-06.jpg') }}"
+                                alt="A beautiful memory of her"
+                                loading="lazy"
+                            >
+
+                            <div class="memory-overlay"></div>
+
+                            <span class="memory-number">
+                                06
+                            </span>
+
+                        </div>
+
+                        <div class="memory-info">
+
+                            <span class="memory-date">
+                                One more favourite
+                            </span>
+
+                            <h3>
+                                That little moment.
+                            </h3>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- MEMORY 07 -->
+
+                    <article class="memory-card memory-card-large">
+
+                        <div class="memory-image">
+
+                            <img
+                                src="{{ url_for('static', filename='images/memory-07.jpg') }}"
+                                alt="A beautiful memory of her"
+                                loading="lazy"
+                            >
+
+                            <div class="memory-overlay"></div>
+
+                            <span class="memory-number">
+                                07
+                            </span>
+
+                        </div>
+
+                        <div class="memory-info">
+
+                            <span class="memory-date">
+                                Something I wanted to keep
+                            </span>
+
+                            <h3>
+                                You make everything a little prettier.
+                            </h3>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- MEMORY 08 -->
+
+                    <article class="memory-card">
+
+                        <div class="memory-image">
+
+                            <img
+                                src="{{ url_for('static', filename='images/memory-08.jpg') }}"
+                                alt="A beautiful memory of her"
+                                loading="lazy"
+                            >
+
+                            <div class="memory-overlay"></div>
+
+                            <span class="memory-number">
+                                08
+                            </span>
+
+                        </div>
+
+                        <div class="memory-info">
+
+                            <span class="memory-date">
+                                Another favourite
+                            </span>
+
+                            <h3>
+                                This one feels like you.
+                            </h3>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- MEMORY 09 -->
+
+                    <article class="memory-card">
+
+                        <div class="memory-image">
+
+                            <img
+                                src="{{ url_for('static', filename='images/memory-09.jpg') }}"
+                                alt="A beautiful memory of her"
+                                loading="lazy"
+                            >
+
+                            <div class="memory-overlay"></div>
+
+                            <span class="memory-number">
+                                09
+                            </span>
+
+                        </div>
+
+                        <div class="memory-info">
+
+                            <span class="memory-date">
+                                Kept close
+                            </span>
+
+                            <h3>
+                                Another reason to smile.
+                            </h3>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- MEMORY 10 -->
+
+                    <article class="memory-card memory-card-large">
+
+                        <div class="memory-image">
+
+                            <img
+                                src="{{ url_for('static', filename='images/memory-10.jpg') }}"
+                                alt="A beautiful memory of her"
+                                loading="lazy"
+                            >
+
+                            <div class="memory-overlay"></div>
+
+                            <span class="memory-number">
+                                10
+                            </span>
+
+                        </div>
+
+                        <div class="memory-info">
+
+                            <span class="memory-date">
+                                My favourite kind of memory
+                            </span>
+
+                            <h3>
+                                Just you. Always you. ❤️
+                            </h3>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 TRANSITION — HER → US
+                 ================================================= -->
+
+            <div class="memory-transition">
+
+                <span>
+                    And then...
+                </span>
+
+                <div class="transition-line"></div>
+
+                <p>
+                    there was <strong>us.</strong> ❤️
+                </p>
+
+            </div>
+
+
+            <!-- =================================================
+                 CHAPTER 02 — US
+                 ================================================= -->
+
+            <div class="memory-chapter memory-chapter-us">
+
+                <div class="memory-chapter-heading">
+
+                    <span class="memory-chapter-number">
+                        02
+                    </span>
+
+                    <div>
+
+                        <p class="memory-chapter-label">
+                            YOU + ME
+                        </p>
+
+                        <h3>
+                            The memories that became ours. ❤️
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     US PHOTO GALLERY — 5 PHOTOS
+                     ================================================= -->
+
+                <div class="memory-gallery memory-gallery-us">
+
+
+                    <!-- MEMORY 11 -->
+
+                    <article class="memory-card memory-card-large">
+
+                        <div class="memory-image">
+
+                            <img
+                                src="{{ url_for('static', filename='images/memory-11.jpg') }}"
+                                alt="A memory of us together"
+                                loading="lazy"
+                            >
+
+                            <div class="memory-overlay"></div>
+
+                            <span class="memory-number">
+                                11
+                            </span>
+
+                        </div>
+
+                        <div class="memory-info">
+
+                            <span class="memory-date">
+                                One of ours
+                            </span>
+
+                            <h3>
+                                Just us.
+                            </h3>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- MEMORY 12 -->
+
+                    <article class="memory-card">
+
+                        <div class="memory-image">
+
+                            <img
+                                src="{{ url_for('static', filename='images/memory-12.jpg') }}"
+                                alt="A memory of us together"
+                                loading="lazy"
+                            >
+
+                            <div class="memory-overlay"></div>
+
+                            <span class="memory-number">
+                                12
+                            </span>
+
+                        </div>
+
+                        <div class="memory-info">
+
+                            <span class="memory-date">
+                                A moment I keep close
+                            </span>
+
+                            <h3>
+                                One of my favourites.
+                            </h3>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- MEMORY 13 -->
+
+                    <article class="memory-card">
+
+                        <div class="memory-image">
+
+                            <img
+                                src="{{ url_for('static', filename='images/memory-13.jpg') }}"
+                                alt="A memory of us together"
+                                loading="lazy"
+                            >
+
+                            <div class="memory-overlay"></div>
+
+                            <span class="memory-number">
+                                13
+                            </span>
+
+                        </div>
+
+                        <div class="memory-info">
+
+                            <span class="memory-date">
+                                Our little moment
+                            </span>
+
+                            <h3>
+                                I'm glad this one happened.
+                            </h3>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- MEMORY 14 -->
+
+                    <article class="memory-card memory-card-large">
+
+                        <div class="memory-image">
+
+                            <img
+                                src="{{ url_for('static', filename='images/memory-14.jpg') }}"
+                                alt="A memory of us together"
+                                loading="lazy"
+                            >
+
+                            <div class="memory-overlay"></div>
+
+                            <span class="memory-number">
+                                14
+                            </span>
+
+                        </div>
+
+                        <div class="memory-info">
+
+                            <span class="memory-date">
+                                Something worth remembering
+                            </span>
+
+                            <h3>
+                                I would choose this moment again.
+                            </h3>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- MEMORY 15 -->
+
+                    <article class="memory-card memory-card-final">
+
+                        <div class="memory-image">
+
+                            <img
+                                src="{{ url_for('static', filename='images/memory-15.jpg') }}"
+                                alt="A memory of us together"
+                                loading="lazy"
+                            >
+
+                            <div class="memory-overlay"></div>
+
+                            <span class="memory-number">
+                                15
+                            </span>
+
+                        </div>
+
+                        <div class="memory-info">
+
+                            <span class="memory-date">
+                                My favourite kind of memory
+                            </span>
+
+                            <h3>
+                                Because this time, it's us. ❤️
+                            </h3>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 END OF PHOTO MEMORIES
+                 ================================================= -->
+
+            <div class="memories-ending">
+
+                <div class="ending-heart">
+                    ♡
+                </div>
+
+                <p>
+                    And somehow, my favourite memories
+                    always have you in them.
+                </p>
+
+                <span>
+                    More memories to come...
+                </span>
+
+            </div>
+                                <!-- =====================================================
+     MEMORIES → FINAL MESSAGE
+     ===================================================== -->
+
+<div class="memories-next">
+
+    <button
+        id="memoriesContinueButton"
+        class="continue-button memories-continue-button"
+        type="button"
+    >
+        Continue
+        <span>→</span>
+    </button>
+
+</div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         FINAL MESSAGE SCREEN
+         ========================================================= -->
+
+    <section id="finalMessage"
+        class="screen final-message-screen">
+
+        <div class="final-message-content">
+
+            <!-- SMALL INTRO -->
+
+            <p class="eyebrow">
+                ONE LAST THING...
+            </p>
+
+
+            <!-- HEART -->
+
+            <div class="final-heart">
+                ❤️
+            </div>
+
+
+            <!-- MAIN HEADING -->
+
+            <h2 class="final-message-heading">
+
+                If I could give you
+                <span>
+                    one thing...
+                </span>
+
+            </h2>
+
+
+            <!-- MESSAGE -->
+
+            <div class="final-message-text">
+
+                <p>
+                    It wouldn't be something wrapped in a box.
+                </p>
+
+                <p>
+                    It wouldn't be something expensive.
+                </p>
+
+                <p>
+                    I'd give you the ability to see yourself
+                    the way I see you.
+                </p>
+
+                <p class="final-highlight">
+                    Because maybe then you'd understand
+                    just how special you really are to me. ❤️
+                </p>
+
+            </div>
+
+
+            <!-- DIVIDER -->
+
+            <div class="final-divider">
+                <span></span>
+                <span>♥</span>
+                <span></span>
+            </div>
+
+
+            <!-- PERSONAL MESSAGE -->
+
+            <div class="final-letter">
+
+                <p>
+                    Thank you for becoming such a beautiful
+                    part of my life.
+                </p>
+
+                <p>
+                    Thank you for the laughs, the conversations,
+                    the memories, the silly moments,
+                    and even the difficult ones.
+                </p>
+
+                <p>
+                    Every little moment with you has become
+                    something I'll always carry with me.
+                </p>
+
+                <p>
+                    And on your birthday, more than anything,
+                    I just hope you are happy.
+                </p>
+
+                <p class="final-love">
+                    Happy 22nd Birthday, Nishii. ❤️
+                </p>
+
+                <p class="final-signature">
+                    — Shazib. 💖
+                </p>
+
+            </div>
+
+
+            <!-- FINAL LINE -->
+
+            <div class="final-ending">
+
+                <span>
+                    This isn't the end...
+                </span>
+
+                <strong>
+                    It's just another memory. ❤️
+                </strong>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+         ========================================================= -->
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
+
 
 </body>
 

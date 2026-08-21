@@ -1,9 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap');
+/* =========================================================
+   MY FAVOURITE PERSON ❤️
+   PREMIUM / SMOOTH VERSION
+   TRUE CROSSFADE
+   ========================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap");
 
 
-/* ========================= */
-/* RESET */
-/* ========================= */
+/* =========================================================
+   RESET
+   ========================================================= */
 
 * {
     margin: 0;
@@ -17,19 +23,21 @@ body {
     height: 100%;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background: #050505;
-    color: white;
-
+    color: #ffffff;
     font-family: "Inter", sans-serif;
-
     overflow: hidden;
 }
 
 
-/* ========================= */
-/* BACKGROUND */
-/* ========================= */
+/* =========================================================
+   BACKGROUND
+   ========================================================= */
 
 body::before {
     content: "";
@@ -37,171 +45,307 @@ body::before {
     position: fixed;
     inset: 0;
 
+    z-index: 0;
+    pointer-events: none;
+
     background:
         radial-gradient(
-            circle at 50% 50%,
-            rgba(255, 70, 130, 0.09),
-            transparent 35%
+            circle at 50% 45%,
+            rgba(255, 70, 130, 0.13),
+            transparent 42%
         );
-
-    pointer-events: none;
 }
 
-
-/* ========================= */
-/* STARS */
-/* ========================= */
 
 .stars {
     position: fixed;
     inset: 0;
 
-    background-image:
-        radial-gradient(1px 1px at 20% 30%, white, transparent),
-        radial-gradient(1px 1px at 80% 20%, white, transparent),
-        radial-gradient(1px 1px at 40% 70%, white, transparent),
-        radial-gradient(1px 1px at 70% 80%, white, transparent),
-        radial-gradient(1px 1px at 10% 90%, white, transparent),
-        radial-gradient(1px 1px at 90% 60%, white, transparent);
-
-    background-size: 300px 300px;
+    z-index: 0;
+    pointer-events: none;
 
     opacity: 0.35;
 
+    background-image:
+        radial-gradient(
+            1px 1px at 20% 30%,
+            rgba(255,255,255,.9),
+            transparent
+        ),
+        radial-gradient(
+            1px 1px at 80% 20%,
+            rgba(255,255,255,.8),
+            transparent
+        ),
+        radial-gradient(
+            1px 1px at 40% 70%,
+            rgba(255,255,255,.7),
+            transparent
+        ),
+        radial-gradient(
+            1px 1px at 70% 80%,
+            rgba(255,255,255,.8),
+            transparent
+        ),
+        radial-gradient(
+            1px 1px at 10% 90%,
+            rgba(255,255,255,.7),
+            transparent
+        ),
+        radial-gradient(
+            1px 1px at 90% 60%,
+            rgba(255,255,255,.8),
+            transparent
+        );
+
+    background-size: 300px 300px;
+
     animation: starsMove 25s linear infinite;
-
-    pointer-events: none;
 }
 
-@keyframes starsMove {
-
-    from {
-        transform: translateY(0);
-    }
-
-    to {
-        transform: translateY(-300px);
-    }
-}
-
-
-/* ========================= */
-/* CURSOR GLOW */
-/* ========================= */
 
 .cursor-glow {
-
     position: fixed;
+
+    left: 50%;
+    top: 50%;
 
     width: 350px;
     height: 350px;
+
+    z-index: 1;
+    pointer-events: none;
+
+    transform: translate(-50%, -50%);
 
     border-radius: 50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(255, 70, 130, 0.10),
+            rgba(255,70,130,.11),
             transparent 70%
         );
 
-    transform: translate(-50%, -50%);
-
-    pointer-events: none;
-
-    z-index: 1;
+    transition:
+        left .08s linear,
+        top .08s linear;
 }
 
 
-/* ========================= */
-/* SCREENS */
-/* ========================= */
+/* =========================================================
+   SCREEN SYSTEM
+   TRUE CROSSFADE — NO DEAD GAP
+   ========================================================= */
 
 .screen {
-
-    position: absolute;
-
+    position: fixed;
     inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 2;
 
     display: flex;
 
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 
-    text-align: center;
+    padding: 100px 25px 80px;
 
-    padding: 30px;
+    overflow-x: hidden;
+    overflow-y: auto;
 
     opacity: 0;
-
     visibility: hidden;
 
-    transform: scale(1.03);
+    pointer-events: none;
+
+    transform:
+        translate3d(0, 18px, 0)
+        scale(.995);
+
+    /*
+       IMPORTANT:
+
+       There is NO delayed visibility here.
+
+       This allows the old and new screens
+       to overlap during the crossfade.
+    */
 
     transition:
-        opacity 1.2s ease,
-        transform 1.2s ease,
-        visibility 1.2s;
+        opacity .75s cubic-bezier(.22,1,.36,1),
+        transform .85s cubic-bezier(.22,1,.36,1),
+        visibility 0s linear 0s;
 
-    z-index: 2;
+    will-change:
+        opacity,
+        transform;
 }
 
+
+/* =========================================================
+   HIDE SCROLLBAR
+   ========================================================= */
+
+.screen::-webkit-scrollbar {
+    width: 0;
+    display: none;
+}
+
+.screen {
+    scrollbar-width: none;
+}
+
+
+/* =========================================================
+   ACTIVE SCREEN
+   ========================================================= */
+
 .screen.active {
+
+    z-index: 3;
 
     opacity: 1;
 
     visibility: visible;
 
-    transform: scale(1);
+    pointer-events: auto;
+
+    transform:
+        translate3d(0,0,0)
+        scale(1);
+
+    transition:
+        opacity .75s cubic-bezier(.22,1,.36,1),
+        transform .85s cubic-bezier(.22,1,.36,1),
+        visibility 0s linear 0s;
 }
 
 
-/* ========================= */
-/* INTRO */
-/* ========================= */
+/* =========================================================
+   IMPORTANT
+   REMOVE SECOND SCREEN CONTENT ANIMATION
+   ========================================================= */
+
+/*
+   The screen itself now performs the transition.
+
+   We intentionally DO NOT run contentReveal here.
+
+   This prevents:
+
+       OLD SCREEN FADES
+              ↓
+       NEW SCREEN APPEARS
+              ↓
+       CONTENT WAITS
+              ↓
+       CONTENT ANIMATION STARTS
+
+   That was causing the delayed text crossfade.
+*/
+
+.screen.active > div {
+    animation: none;
+
+    transform:
+        translate3d(0,0,0);
+}
+
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+#intro {
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 40px 25px;
+}
+
 
 .intro-content {
 
+    width: 100%;
+
     max-width: 1000px;
 
-    position: relative;
+    margin: 0 auto;
 
-    z-index: 5;
+    text-align: center;
 }
 
 
-.eyebrow {
-
-    font-size: 12px;
-
-    letter-spacing: 5px;
-
-    color: rgba(255, 255, 255, 0.55);
-
+.intro-content .eyebrow {
     margin-bottom: 25px;
-
-    animation: fadeUp 1.5s ease forwards;
 }
 
 
-h1 {
+.intro-content h1 {
+    margin-bottom: 30px;
+}
+
+
+.intro-content .subtitle {
+    margin-bottom: 45px;
+}
+
+
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+
+h1,
+h2,
+h3 {
 
     font-family:
         "Cormorant Garamond",
         serif;
 
-    font-size:
-        clamp(50px, 8vw, 110px);
-
     font-weight: 400;
+}
 
-    line-height: 0.95;
 
-    letter-spacing: -3px;
+h1,
+h2,
+h3,
+p {
+    overflow-wrap: break-word;
+}
+
+
+.eyebrow {
+
+    margin-bottom: 25px;
+
+    color:
+        rgba(255,255,255,.55);
+
+    font-size: 12px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
 
     margin-bottom: 30px;
 
-    animation: fadeUp 1.5s ease 0.2s both;
+    font-size:
+        clamp(50px,8vw,110px);
+
+    line-height: .95;
+
+    letter-spacing: -3px;
 }
 
 
@@ -209,28 +353,46 @@ h1 span {
 
     display: inline-block;
 
-    animation: heartbeat 2s infinite;
-
+    animation:
+        heartbeat
+        2s
+        ease-in-out
+        infinite;
 }
 
 
 .subtitle {
 
-    color: rgba(255, 255, 255, 0.65);
+    color:
+        rgba(255,255,255,.65);
 
     font-size: 17px;
 
     font-weight: 300;
-
-    margin-bottom: 45px;
-
-    animation: fadeUp 1.5s ease 0.4s both;
 }
 
 
-/* ========================= */
-/* GIFT BUTTON */
-/* ========================= */
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.gift-button,
+.continue-button {
+
+    cursor: pointer;
+
+    font-family:
+        "Inter",
+        sans-serif;
+
+    transition:
+        transform .35s cubic-bezier(.22,1,.36,1),
+        background .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease,
+        opacity .6s ease;
+}
+
 
 .gift-button {
 
@@ -238,159 +400,74 @@ h1 span {
 
     padding: 17px 30px;
 
+    border:
+        1px solid
+        rgba(255,255,255,.25);
+
     border-radius: 50px;
 
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    background:
+        rgba(255,255,255,.03);
 
-    background: rgba(255, 255, 255, 0.03);
-
-    color: white;
-
-    font-family: inherit;
+    color: #fff;
 
     font-size: 15px;
 
-    cursor: pointer;
-
     backdrop-filter: blur(10px);
 
-    transition: 0.4s ease;
-
     animation:
-        fadeUp 1.5s ease 0.6s both,
-        buttonPulse 3s infinite 2s;
+        fadeUp
+        1.2s
+        ease
+        .25s
+        both,
+
+        buttonPulse
+        3s
+        ease-in-out
+        2s
+        infinite;
 }
 
 
 .gift-button:hover {
 
-    background: rgba(255, 255, 255, 0.12);
+    background:
+        rgba(255,255,255,.1);
 
-    border-color: rgba(255, 120, 160, 0.7);
+    border-color:
+        rgba(255,120,160,.7);
 
-    transform: translateY(-3px);
+    transform:
+        translateY(-3px);
 
     box-shadow:
-        0 15px 50px rgba(255, 60, 120, 0.15);
+        0 15px 50px
+        rgba(255,60,120,.18);
 }
 
 
 .gift-icon {
 
+    display: inline-block;
+
     margin-left: 10px;
 
     font-size: 18px;
+
+    transition:
+        transform .35s
+        cubic-bezier(.22,1,.36,1);
 }
 
 
-/* ========================= */
-/* BIRTHDAY SCREEN */
-/* ========================= */
+.gift-button:hover .gift-icon {
 
-.birthday-content {
-
-    max-width: 900px;
+    transform:
+        rotate(10deg)
+        scale(1.15);
 }
 
-
-h2 {
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    font-size:
-        clamp(42px, 6vw, 80px);
-
-    font-weight: 400;
-
-    margin-bottom: 25px;
-}
-
-
-.birthday-message {
-
-    max-width: 550px;
-
-    margin: auto;
-
-    line-height: 1.8;
-
-    color: rgba(255, 255, 255, 0.65);
-
-    font-size: 17px;
-
-    margin-bottom: 50px;
-}
-
-
-/* ========================= */
-/* COUNTDOWN */
-/* ========================= */
-
-.countdown {
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    gap: 15px;
-
-    margin-bottom: 35px;
-}
-
-
-.time-box {
-
-    min-width: 90px;
-}
-
-
-.time-box span {
-
-    display: block;
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    font-size: 55px;
-
-    font-weight: 400;
-}
-
-
-.time-box small {
-
-    font-size: 9px;
-
-    letter-spacing: 3px;
-
-    color: rgba(255, 255, 255, 0.4);
-}
-
-
-.colon {
-
-    font-size: 35px;
-
-    color: rgba(255, 255, 255, 0.3);
-}
-
-
-.birthday-status {
-
-    color: rgba(255, 150, 180, 0.8);
-
-    margin-bottom: 40px;
-}
-
-
-/* ========================= */
-/* CONTINUE BUTTON */
-/* ========================= */
 
 .continue-button {
 
@@ -398,34 +475,1619 @@ h2 {
 
     border: none;
 
-    background: white;
-
-    color: black;
-
     border-radius: 30px;
 
-    cursor: pointer;
+    background: #fff;
 
-    font-family: inherit;
+    color: #050505;
 
     font-size: 14px;
-
-    transition: 0.3s;
 }
 
 
 .continue-button:hover {
 
-    transform: translateY(-3px);
+    transform:
+        translateY(-3px);
 
     box-shadow:
-        0 10px 30px rgba(255, 255, 255, 0.2);
+        0 10px 30px
+        rgba(255,255,255,.2);
 }
 
 
-/* ========================= */
-/* ANIMATIONS */
-/* ========================= */
+.continue-button:active,
+.gift-button:active {
+
+    transform:
+        scale(.97);
+}
+
+
+/* =========================================================
+   BIRTHDAY
+   ========================================================= */
+
+.birthday-content {
+
+    width: 100%;
+
+    max-width: 900px;
+
+    text-align: center;
+}
+
+
+.birthday-reveal {
+
+    max-width: 650px;
+
+    margin:
+        0 auto 35px;
+}
+
+
+.party-poppers {
+
+    position: relative;
+
+    height: 70px;
+
+    margin-bottom: 5px;
+}
+
+
+.party-poppers span {
+
+    position: absolute;
+
+    font-size: 32px;
+
+    opacity: 0;
+}
+
+
+.party-poppers span:nth-child(1) {
+
+    left: 5%;
+
+    animation:
+        popperLeft
+        1.5s
+        ease-out
+        .2s
+        forwards;
+}
+
+
+.party-poppers span:nth-child(2) {
+
+    left: 25%;
+
+    animation:
+        popperLeft
+        1.7s
+        ease-out
+        .3s
+        forwards;
+}
+
+
+.party-poppers span:nth-child(3) {
+
+    left: 50%;
+
+    animation:
+        sparklePop
+        1.4s
+        ease-out
+        .4s
+        forwards;
+}
+
+
+.party-poppers span:nth-child(4) {
+
+    right: 25%;
+
+    animation:
+        popperRight
+        1.7s
+        ease-out
+        .3s
+        forwards;
+}
+
+
+.party-poppers span:nth-child(5) {
+
+    right: 5%;
+
+    animation:
+        popperRight
+        1.5s
+        ease-out
+        .2s
+        forwards;
+}
+
+
+.birthday-title {
+
+    margin-bottom: 35px;
+
+    font-size:
+        clamp(45px,8vw,75px);
+
+    line-height: .98;
+
+    letter-spacing: -2px;
+}
+
+
+.birthday-title span {
+
+    display: inline-block;
+
+    color:
+        rgba(255,130,170,.95);
+
+    animation:
+        birthdayHeartbeat
+        2s
+        ease-in-out
+        infinite;
+}
+
+
+.birthday-love {
+
+    max-width: 580px;
+
+    margin:
+        0 auto 15px;
+
+    color:
+        rgba(255,255,255,.72);
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    font-weight: 300;
+}
+
+
+/* =========================================================
+   LETTER
+   ========================================================= */
+
+.letter-content {
+
+    width: 100%;
+
+    max-width: 850px;
+
+    text-align: center;
+}
+
+
+.letter-content h2 {
+
+    margin-bottom: 45px;
+
+    font-size:
+        clamp(42px,6vw,80px);
+
+    line-height: 1.05;
+}
+
+
+.letter-content h2 span {
+
+    color:
+        rgba(255,130,170,.9);
+}
+
+
+.envelope {
+
+    position: relative;
+
+    width: 280px;
+    height: 180px;
+
+    margin:
+        0 auto 30px;
+
+    cursor: pointer;
+
+    perspective: 1000px;
+
+    filter:
+        drop-shadow(
+            0 20px 50px
+            rgba(255,70,130,.15)
+        );
+
+    transition:
+        transform .5s
+        cubic-bezier(.22,1,.36,1);
+}
+
+
+.envelope:hover {
+
+    transform:
+        translateY(-8px)
+        scale(1.02);
+}
+
+
+.envelope-body {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 2;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.18);
+
+    border-radius: 4px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #171717,
+            #0c0c0c
+        );
+}
+
+
+.envelope-body p {
+
+    margin-top: 12px;
+
+    color:
+        rgba(255,255,255,.75);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 20px;
+}
+
+
+.envelope-heart {
+
+    font-size: 32px;
+
+    animation:
+        heartbeat
+        2s
+        ease-in-out
+        infinite;
+}
+
+
+.envelope-flap {
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    z-index: 4;
+
+    width: 0;
+
+    height: 0;
+
+    border-left:
+        140px solid transparent;
+
+    border-right:
+        140px solid transparent;
+
+    border-top:
+        95px solid #242424;
+
+    transform-origin:
+        top center;
+
+    transition:
+        transform .9s
+        cubic-bezier(.22,1,.36,1);
+}
+
+
+.envelope.open .envelope-flap {
+
+    transform:
+        rotateX(180deg);
+}
+
+
+.letter-text {
+
+    max-width: 600px;
+
+    margin:
+        30px auto 0;
+
+    opacity: 0;
+
+    transform:
+        translateY(25px);
+
+    pointer-events: none;
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s
+        cubic-bezier(.22,1,.36,1);
+}
+
+
+.letter-text.visible {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+    pointer-events: auto;
+}
+
+
+.letter-text p {
+
+    margin-bottom: 25px;
+
+    color:
+        rgba(255,255,255,.82);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 22px;
+
+    line-height: 1.8;
+}
+
+
+.letter-signature {
+
+    color:
+        rgba(255,130,170,.9)
+        !important;
+
+    font-size:
+        20px !important;
+}
+
+
+#openLetterButton {
+
+    transition:
+        opacity .7s ease,
+        transform .7s ease;
+}
+
+
+#letterContinueButton {
+
+    margin-top: 10px;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transform:
+        translateY(15px);
+}
+
+
+#letterContinueButton.visible {
+
+    opacity: 1;
+
+    pointer-events: auto;
+
+    transform:
+        translateY(0);
+}
+
+
+/* =========================================================
+   22 THINGS
+   ========================================================= */
+
+.things-content {
+
+    width: 100%;
+
+    max-width: 850px;
+
+    padding-bottom: 50px;
+
+    text-align: center;
+}
+
+
+.things-heading {
+
+    margin-bottom: 22px;
+
+    font-size:
+        clamp(48px,7vw,78px);
+
+    line-height: .98;
+
+    letter-spacing: -2px;
+}
+
+
+.things-heading span {
+
+    display: block;
+
+    color:
+        rgba(255,130,170,.9);
+}
+
+
+.things-intro {
+
+    max-width: 700px;
+
+    margin:
+        0 auto 40px;
+
+    color:
+        rgba(255,255,255,.65);
+
+    font-size: 17px;
+
+    font-weight: 300;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   HEART CARD
+   ========================================================= */
+
+.heart-card-area {
+
+    width: 360px;
+
+    height: 320px;
+
+    margin:
+        0 auto 30px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    perspective: 1400px;
+}
+
+
+.heart-card {
+
+    position: relative;
+
+    width: 310px;
+
+    height: 310px;
+
+    cursor: pointer;
+
+    perspective: 1400px;
+
+    filter:
+        drop-shadow(
+            0 25px 55px
+            rgba(255,40,100,.22)
+        );
+
+    transition:
+        filter .4s ease,
+        transform .4s ease,
+        opacity .5s ease;
+}
+
+
+.heart-card:hover {
+
+    transform:
+        translateY(-6px);
+}
+
+
+.heart-card-inner {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 100%;
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform .85s
+        cubic-bezier(.4,.2,.2,1);
+}
+
+
+.heart-card.flipped
+.heart-card-inner {
+
+    transform:
+        rotateY(180deg);
+}
+
+
+.heart-card-front,
+.heart-card-back {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    backface-visibility: hidden;
+
+    -webkit-backface-visibility: hidden;
+
+    isolation: isolate;
+}
+
+
+.heart-card-front::before,
+.heart-card-back::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    width: 280px;
+
+    height: 280px;
+
+    z-index: -1;
+
+    transform:
+        translate(-50%,-48%);
+
+    clip-path:
+        polygon(
+            50% 92%,
+            42% 85%,
+            34% 78%,
+            26% 70%,
+            18% 61%,
+            11% 51%,
+            7% 41%,
+            8% 30%,
+            13% 21%,
+            21% 14%,
+            31% 11%,
+            40% 14%,
+            50% 23%,
+            60% 14%,
+            69% 11%,
+            79% 14%,
+            87% 21%,
+            92% 30%,
+            93% 41%,
+            89% 51%,
+            82% 61%,
+            74% 70%,
+            66% 78%,
+            58% 85%
+        );
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,105,150,.72),
+            rgba(125,18,58,.68)
+        );
+
+    filter:
+        drop-shadow(
+            0 25px 55px
+            rgba(255,40,100,.24)
+        );
+}
+
+
+.heart-card-front {
+
+    color: #fff;
+
+    padding-top: 20px;
+}
+
+
+.heart-number {
+
+    color:
+        rgba(255,255,255,.98);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 48px;
+}
+
+
+.heart-symbol {
+
+    margin:
+        4px 0 7px;
+
+    color:
+        rgba(255,145,180,.98);
+
+    font-size: 28px;
+
+    animation:
+        heartbeat
+        2s
+        ease-in-out
+        infinite;
+}
+
+
+.heart-card-front p {
+
+    color:
+        rgba(255,255,255,.62);
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+}
+
+
+.heart-card-back {
+
+    transform:
+        rotateY(180deg);
+
+    padding: 50px;
+
+    color: #fff;
+}
+
+
+.thing-number {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255,255,255,.58);
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+}
+
+
+.thing-text {
+
+    max-width: 190px;
+
+    color:
+        rgba(255,255,255,.96);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 25px;
+
+    line-height: 1.35;
+
+    text-align: center;
+}
+
+
+.heart-small {
+
+    margin-top: 16px;
+
+    color:
+        rgba(255,145,180,.98);
+
+    font-size: 18px;
+
+    animation:
+        heartbeat
+        2s
+        ease-in-out
+        infinite;
+}
+
+
+#nextThingButton {
+
+    min-width: 150px;
+}
+
+
+.things-complete {
+
+    display: none;
+
+    margin-top: 25px;
+
+    animation:
+        fadeUp
+        1.2s
+        ease
+        both;
+}
+
+
+.things-complete p {
+
+    margin-bottom: 15px;
+
+    color:
+        rgba(255,130,170,.82);
+
+    font-size: 14px;
+
+    letter-spacing: 3px;
+}
+
+
+.things-complete h3 {
+
+    margin-bottom: 30px;
+
+    font-size: 32px;
+
+    line-height: 1.3;
+}
+
+
+/* =========================================================
+   MEMORIES
+   ========================================================= */
+
+.memories-screen {
+
+    padding:
+        90px 25px 120px;
+}
+
+
+.memories-content {
+
+    width: 100%;
+
+    max-width: 1100px;
+
+    padding-bottom: 80px;
+}
+
+
+.memories-intro {
+
+    max-width: 720px;
+
+    margin:
+        0 auto 90px;
+
+    text-align: center;
+}
+
+
+.memories-heading {
+
+    margin-bottom: 30px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(55px,8vw,90px);
+
+    line-height: .9;
+
+    letter-spacing: -3px;
+}
+
+
+.memories-heading span {
+
+    display: block;
+
+    color:
+        rgba(255,130,170,.92);
+}
+
+
+.memories-subtitle {
+
+    max-width: 600px;
+
+    margin: 0 auto;
+
+    color:
+        rgba(255,255,255,.62);
+
+    font-size: 16px;
+
+    font-weight: 300;
+
+    line-height: 1.8;
+}
+
+
+.memory-chapter {
+
+    width: 100%;
+
+    margin-bottom: 120px;
+}
+
+
+.memory-chapter-heading {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 22px;
+
+    margin-bottom: 45px;
+
+    text-align: left;
+}
+
+
+.memory-chapter-number {
+
+    color:
+        rgba(255,130,170,.75);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 42px;
+
+    line-height: 1;
+}
+
+
+.memory-chapter-label {
+
+    margin-bottom: 6px;
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+}
+
+
+.memory-chapter-heading h3 {
+
+    color:
+        rgba(255,255,255,.94);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 34px;
+
+    font-weight: 400;
+}
+
+
+.memory-gallery {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
+    gap: 70px 35px;
+
+    width: 100%;
+}
+
+
+.memory-card {
+
+    position: relative;
+
+    width: 100%;
+
+    text-align: left;
+
+    animation:
+        fadeUp
+        1s
+        ease
+        both;
+}
+
+
+.memory-card-large {
+
+    grid-column:
+        span 2;
+}
+
+
+.memory-image {
+
+    position: relative;
+
+    width: 100%;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    border-radius: 5px;
+
+    background: #111;
+
+    box-shadow:
+        0 25px 70px
+        rgba(0,0,0,.35);
+}
+
+
+.memory-image img {
+
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
+    object-fit: contain;
+
+    transition:
+        transform 1s
+        cubic-bezier(.22,1,.36,1),
+        filter .8s ease;
+}
+
+
+.memory-card:hover
+.memory-image img {
+
+    transform:
+        scale(1.025);
+
+    filter:
+        brightness(1.05);
+}
+
+
+.memory-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.48),
+            transparent 45%
+        );
+
+    transition:
+        opacity .5s ease;
+}
+
+
+.memory-card:hover
+.memory-overlay {
+
+    opacity: .75;
+}
+
+
+.memory-number {
+
+    position: absolute;
+
+    top: 20px;
+
+    right: 22px;
+
+    color:
+        rgba(255,255,255,.88);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 18px;
+
+    text-shadow:
+        0 2px 15px
+        rgba(0,0,0,.5);
+}
+
+
+.memory-info {
+
+    padding:
+        18px 5px 0;
+}
+
+
+.memory-date {
+
+    display: block;
+
+    margin-bottom: 9px;
+
+    color:
+        rgba(255,130,170,.72);
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+}
+
+
+.memory-info h3 {
+
+    color:
+        rgba(255,255,255,.92);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 27px;
+
+    font-weight: 400;
+
+    line-height: 1.2;
+}
+
+
+/* =========================================================
+   MEMORY TRANSITION
+   ========================================================= */
+
+.memory-transition {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    max-width: 500px;
+
+    margin:
+        30px auto 130px;
+
+    text-align: center;
+}
+
+
+.memory-transition > span {
+
+    margin-bottom: 20px;
+
+    color:
+        rgba(255,255,255,.48);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 25px;
+
+    font-style: italic;
+}
+
+
+.transition-line {
+
+    width: 1px;
+
+    height: 75px;
+
+    margin-bottom: 22px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(255,130,170,.05),
+            rgba(255,130,170,.75),
+            rgba(255,130,170,.05)
+        );
+}
+
+
+.memory-transition p {
+
+    color:
+        rgba(255,255,255,.9);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 38px;
+}
+
+
+.memory-transition strong {
+
+    color:
+        rgba(255,130,170,.95);
+}
+
+
+/* =========================================================
+   US MEMORIES
+   ========================================================= */
+
+.memory-chapter-us {
+
+    margin-bottom: 100px;
+}
+
+
+.memory-gallery-us {
+
+    gap:
+        65px 35px;
+}
+
+
+.memory-gallery-us
+.memory-card-final {
+
+    grid-column:
+        span 2;
+
+    max-width: 850px;
+
+    margin:
+        20px auto 0;
+}
+
+
+.memory-gallery-us
+.memory-card-final
+.memory-info {
+
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+
+.memory-gallery-us
+.memory-card-final
+.memory-info h3 {
+
+    font-size: 34px;
+}
+
+
+.memory-gallery-us
+.memory-info {
+
+    position: relative;
+
+    padding-top: 22px;
+}
+
+
+.memory-gallery-us
+.memory-info::before {
+
+    content: "";
+
+    display: block;
+
+    width: 28px;
+
+    height: 1px;
+
+    margin-bottom: 16px;
+
+    background:
+        rgba(255,130,170,.65);
+}
+
+
+.memory-gallery-us
+.memory-card-final
+.memory-info::before {
+
+    margin:
+        0 auto 18px;
+}
+
+
+/* =========================================================
+   MEMORIES ENDING
+   ========================================================= */
+
+.memories-ending {
+
+    max-width: 650px;
+
+    margin:
+        150px auto 40px;
+
+    padding:
+        70px 20px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.08);
+
+    text-align: center;
+}
+
+
+.ending-heart {
+
+    margin-bottom: 25px;
+
+    color:
+        rgba(255,130,170,.88);
+
+    font-size: 45px;
+
+    animation:
+        heartbeat
+        2.5s
+        ease-in-out
+        infinite;
+}
+
+
+.memories-ending p {
+
+    margin-bottom: 20px;
+
+    color:
+        rgba(255,255,255,.86);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 30px;
+
+    line-height: 1.4;
+}
+
+
+.memories-ending span {
+
+    color:
+        rgba(255,255,255,.35);
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   FINAL MESSAGE
+   ========================================================= */
+
+.final-message-screen {
+
+    padding:
+        100px 25px 120px;
+}
+
+
+.final-message-content {
+
+    width: 100%;
+
+    max-width: 900px;
+
+    padding-bottom: 100px;
+
+    text-align: center;
+}
+
+
+.final-heart {
+
+    margin:
+        0 auto 30px;
+
+    font-size: 46px;
+
+    animation:
+        heartbeat
+        2.5s
+        ease-in-out
+        infinite;
+}
+
+
+.final-message-heading {
+
+    max-width: 800px;
+
+    margin:
+        0 auto 45px;
+
+    font-size:
+        clamp(52px,8vw,92px);
+
+    line-height: .95;
+
+    letter-spacing: -3px;
+}
+
+
+.final-message-heading span {
+
+    display: block;
+
+    color:
+        rgba(255,130,170,.92);
+}
+
+
+.final-message-text {
+
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    color:
+        rgba(255,255,255,.72);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 25px;
+
+    line-height: 1.65;
+}
+
+
+.final-message-text p {
+
+    margin-bottom: 18px;
+}
+
+
+.final-highlight {
+
+    margin-top: 30px;
+
+    color:
+        rgba(255,255,255,.94);
+
+    font-size: 28px;
+}
+
+
+.final-divider {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 18px;
+
+    width: 100%;
+
+    max-width: 500px;
+
+    margin:
+        60px auto;
+}
+
+
+.final-divider span:first-child,
+.final-divider span:last-child {
+
+    flex: 1;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            to right,
+            transparent,
+            rgba(255,255,255,.15)
+        );
+}
+
+
+.final-divider span:last-child {
+
+    background:
+        linear-gradient(
+            to left,
+            transparent,
+            rgba(255,255,255,.15)
+        );
+}
+
+
+.final-letter {
+
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    color:
+        rgba(255,255,255,.76);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 22px;
+
+    line-height: 1.8;
+}
+
+
+.final-letter p {
+
+    margin-bottom: 24px;
+}
+
+
+.final-love {
+
+    margin:
+        35px 0 10px !important;
+
+    color:
+        rgba(255,130,170,.95);
+
+    font-size: 30px;
+}
+
+
+.final-signature {
+
+    color:
+        rgba(255,255,255,.48);
+
+    font-size: 17px;
+
+    font-style: italic;
+}
+
+
+.final-ending {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 75px;
+}
+
+
+.final-ending span {
+
+    color:
+        rgba(255,255,255,.32);
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+}
+
+
+.final-ending strong {
+
+    color:
+        rgba(255,255,255,.72);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 25px;
+
+    font-weight: 400;
+}
+
+
+/* =========================================================
+   IMAGES
+   ========================================================= */
+
+img {
+    max-width: 100%;
+}
+
+
+/* =========================================================
+   OTHER ANIMATIONS
+   ========================================================= */
 
 @keyframes fadeUp {
 
@@ -434,7 +2096,7 @@ h2 {
         opacity: 0;
 
         transform:
-            translateY(25px);
+            translate3d(0,25px,0);
     }
 
     to {
@@ -442,7 +2104,7 @@ h2 {
         opacity: 1;
 
         transform:
-            translateY(0);
+            translate3d(0,0,0);
     }
 }
 
@@ -470,267 +2132,808 @@ h2 {
     100% {
 
         box-shadow:
-            0 0 0 rgba(255, 80, 130, 0);
+            0 0 0
+            rgba(255,80,130,0);
     }
 
     50% {
 
         box-shadow:
-            0 0 35px rgba(255, 80, 130, 0.12);
+            0 0 35px
+            rgba(255,80,130,.14);
     }
 }
 
 
-/* ========================= */
-/* MOBILE */
-/* ========================= */
+@keyframes birthdayHeartbeat {
+
+    0%,
+    100% {
+
+        transform:
+            scale(1);
+    }
+
+    50% {
+
+        transform:
+            scale(1.06);
+    }
+}
+
+
+@keyframes popperLeft {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translate(0,40px)
+            rotate(0)
+            scale(.5);
+    }
+
+    30% {
+
+        opacity: 1;
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translate(-25px,-45px)
+            rotate(-25deg)
+            scale(1);
+    }
+}
+
+
+@keyframes popperRight {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translate(0,40px)
+            rotate(0)
+            scale(.5);
+    }
+
+    30% {
+
+        opacity: 1;
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translate(25px,-45px)
+            rotate(25deg)
+            scale(1);
+    }
+}
+
+
+@keyframes sparklePop {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(30px)
+            scale(0);
+    }
+
+    40% {
+
+        opacity: 1;
+
+        transform:
+            translateY(-20px)
+            scale(1.3);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(-40px)
+            scale(1);
+    }
+}
+
+
+@keyframes starsMove {
+
+    from {
+
+        transform:
+            translateY(0);
+    }
+
+    to {
+
+        transform:
+            translateY(-300px);
+    }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .screen {
+
+        padding-top: 85px;
+    }
+
+    .memories-content {
+
+        max-width: 850px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
 @media (max-width: 600px) {
 
+    .screen {
+
+        padding:
+            55px 18px 70px;
+    }
+
+
+    #intro {
+
+        padding:
+            35px 18px;
+    }
+
+
+    .eyebrow {
+
+        margin-bottom: 20px;
+
+        font-size: 10px;
+
+        letter-spacing: 3px;
+    }
+
+
     h1 {
 
-        font-size: 55px;
+        font-size:
+            clamp(46px,14vw,58px);
+
+        line-height: .98;
 
         letter-spacing: -1px;
     }
 
-    .countdown {
 
-        gap: 5px;
+    .subtitle {
+
+        font-size: 15px;
     }
 
-    .time-box {
 
-        min-width: 60px;
+    .birthday-title {
+
+        font-size: 46px;
+
+        letter-spacing: -1px;
     }
 
-    .time-box span {
 
-        font-size: 35px;
+    .birthday-love {
+
+        font-size: 15px;
+
+        line-height: 1.7;
     }
 
-    .colon {
+
+    .party-poppers span {
+
+        font-size: 28px;
+    }
+
+
+    .letter-content h2 {
+
+        margin-bottom: 35px;
+
+        font-size: 42px;
+    }
+
+
+    .envelope {
+
+        width: 240px;
+
+        height: 155px;
+    }
+
+
+    .envelope-flap {
+
+        border-left-width: 120px;
+
+        border-right-width: 120px;
+
+        border-top-width: 80px;
+    }
+
+
+    .letter-text p {
+
+        font-size: 19px;
+
+        line-height: 1.7;
+    }
+
+
+    .things-content {
+
+        padding-bottom: 40px;
+    }
+
+
+    .things-heading {
+
+        font-size:
+            clamp(42px,12vw,54px);
+
+        line-height: 1;
+
+        letter-spacing: -1px;
+    }
+
+
+    .things-intro {
+
+        margin-bottom: 25px;
+
+        font-size: 15px;
+    }
+
+
+    .heart-card-area {
+
+        width: 300px;
+
+        height: 285px;
+
+        margin-bottom: 25px;
+    }
+
+
+    .heart-card {
+
+        width: 255px;
+
+        height: 255px;
+    }
+
+
+    .heart-card-front::before,
+    .heart-card-back::before {
+
+        width: 225px;
+
+        height: 225px;
+    }
+
+
+    .heart-card-back {
+
+        padding:
+            40px 38px;
+    }
+
+
+    .thing-text {
+
+        max-width: 175px;
+
+        font-size: 21px;
+    }
+
+
+    .things-complete h3 {
+
+        font-size: 28px;
+    }
+
+
+    .memories-screen {
+
+        padding:
+            55px 15px 80px;
+    }
+
+
+    .memories-content {
+
+        padding-bottom: 40px;
+    }
+
+
+    .memories-intro {
+
+        margin-bottom: 65px;
+    }
+
+
+    .memories-heading {
+
+        font-size:
+            clamp(52px,15vw,68px);
+
+        letter-spacing: -2px;
+
+        margin-bottom: 24px;
+    }
+
+
+    .memories-subtitle {
+
+        max-width: 330px;
+
+        font-size: 15px;
+
+        line-height: 1.7;
+    }
+
+
+    .memory-chapter {
+
+        margin-bottom: 80px;
+    }
+
+
+    .memory-chapter-heading {
+
+        gap: 14px;
+
+        margin-bottom: 30px;
+    }
+
+
+    .memory-chapter-number {
+
+        font-size: 34px;
+    }
+
+
+    .memory-chapter-label {
+
+        font-size: 9px;
+
+        letter-spacing: 3px;
+    }
+
+
+    .memory-chapter-heading h3 {
+
+        font-size: 27px;
+    }
+
+
+    .memory-gallery {
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 50px;
+    }
+
+
+    .memory-card,
+    .memory-card-large,
+    .memory-gallery-us
+    .memory-card-final {
+
+        width: 100%;
+
+        max-width: none;
+
+        margin: 0;
+    }
+
+
+    .memory-card-large {
+
+        grid-column: auto;
+    }
+
+
+    .memory-image img {
+
+        width: 100%;
+
+        height: auto;
+    }
+
+
+    .memory-info {
+
+        padding:
+            15px 3px 0;
+    }
+
+
+    .memory-date {
+
+        font-size: 9px;
+
+        letter-spacing: 2.5px;
+    }
+
+
+    .memory-info h3 {
+
+        font-size: 24px;
+    }
+
+
+    .memory-transition {
+
+        margin:
+            10px auto 90px;
+    }
+
+
+    .memory-transition > span {
 
         font-size: 22px;
     }
 
+
+    .transition-line {
+
+        height: 60px;
+    }
+
+
+    .memory-transition p {
+
+        font-size: 32px;
+    }
+
+
+    .memory-gallery-us {
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 60px;
+    }
+
+
+    .memory-gallery-us
+    .memory-card-final {
+
+        grid-column: auto;
+    }
+
+
+    .memory-gallery-us
+    .memory-card-final
+    .memory-info h3 {
+
+        font-size: 29px;
+    }
+
+
+    .memories-ending {
+
+        margin:
+            100px auto 20px;
+
+        padding:
+            55px 10px;
+    }
+
+
+    .ending-heart {
+
+        font-size: 40px;
+    }
+
+
+    .memories-ending p {
+
+        font-size: 26px;
+
+        line-height: 1.35;
+    }
+
+
+    .memories-ending span {
+
+        font-size: 9px;
+
+        letter-spacing: 3px;
+    }
+
+
+    .final-message-screen {
+
+        padding:
+            55px 18px 80px;
+    }
+
+
+    .final-message-content {
+
+        padding-bottom: 60px;
+    }
+
+
+    .final-heart {
+
+        margin-bottom: 25px;
+
+        font-size: 40px;
+    }
+
+
+    .final-message-heading {
+
+        margin-bottom: 35px;
+
+        font-size:
+            clamp(44px,13vw,62px);
+
+        line-height: .98;
+
+        letter-spacing: -1.5px;
+    }
+
+
+    .final-message-text {
+
+        font-size: 20px;
+
+        line-height: 1.7;
+    }
+
+
+    .final-highlight {
+
+        font-size: 23px;
+    }
+
+
+    .final-divider {
+
+        margin:
+            45px auto;
+    }
+
+
+    .final-letter {
+
+        font-size: 19px;
+
+        line-height: 1.75;
+    }
+
+
+    .final-love {
+
+        font-size: 26px;
+    }
+
+
+    .final-signature {
+
+        font-size: 15px;
+    }
+
+
+    .final-ending {
+
+        margin-top: 60px;
+    }
+
+
+    .final-ending span {
+
+        font-size: 9px;
+
+        letter-spacing: 3px;
+    }
+
+
+    .final-ending strong {
+
+        font-size: 22px;
+    }
 }
-/* ========================= */
-/* LETTER SCREEN */
-/* ========================= */
-
-.letter-content {
-    max-width: 800px;
-    position: relative;
-    z-index: 5;
-}
-
-.letter-content h2 {
-    margin-bottom: 45px;
-}
-
-.letter-content h2 span {
-    color: rgba(255, 130, 170, 0.9);
-}
 
 
-/* ========================= */
-/* ENVELOPE */
-/* ========================= */
+/* =========================================================
+   TOUCH DEVICES
+   ========================================================= */
 
-.envelope {
-    width: 280px;
-    height: 180px;
-    margin: 0 auto 30px;
+@media (hover: none) {
 
-    position: relative;
+    .memory-card:hover
+    .memory-image img,
 
-    cursor: pointer;
+    .gift-button:hover,
 
-    perspective: 1000px;
+    .continue-button:hover,
 
-    filter:
-        drop-shadow(
-            0 20px 50px rgba(255, 70, 130, 0.15)
-        );
+    .heart-card:hover,
 
-    transition: transform 0.5s ease;
-}
+    .envelope:hover {
 
-.envelope:hover {
-    transform: translateY(-8px);
+        transform: none;
+    }
 }
 
 
-.envelope-body {
-    position: absolute;
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
 
-    inset: 0;
+/*
+   Intentionally not disabling animations automatically.
 
-    background:
-        linear-gradient(
-            145deg,
-            #171717,
-            #0c0c0c
-        );
+   The website is designed around its smooth transitions.
+*/
 
-    border:
-        1px solid rgba(255, 255, 255, 0.18);
 
-    border-radius: 4px;
+/* =========================================================
+   PERFORMANCE
+   ========================================================= */
+
+.screen,
+.screen > div {
+
+    backface-visibility: hidden;
+
+    -webkit-backface-visibility: hidden;
+}
+
+
+/* =========================================================
+   END ❤️
+   ========================================================= */
+   /* =========================================================
+   MEMORIES → FINAL MESSAGE BUTTON
+   ========================================================= */
+
+.memories-next {
 
     display: flex;
-    flex-direction: column;
 
     justify-content: center;
     align-items: center;
 
-    z-index: 2;
+    width: 100%;
+
+    margin:
+        20px auto 120px;
+
+    padding:
+        20px 0 40px;
+
+    text-align: center;
 }
 
 
-.envelope-body p {
-    margin-top: 12px;
+/* Button */
 
-    font-family:
-        "Cormorant Garamond",
-        serif;
+.memories-continue-button {
 
-    font-size: 20px;
+    display: inline-flex;
 
-    color:
-        rgba(255, 255, 255, 0.75);
-}
+    align-items: center;
+    justify-content: center;
 
+    gap: 10px;
 
-.envelope-heart {
-    font-size: 32px;
+    min-width: 155px;
 
-    animation:
-        heartbeat 2s infinite;
-}
-
-
-/* ========================= */
-/* ENVELOPE FLAP */
-/* ========================= */
-
-.envelope-flap {
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
-    width: 0;
-    height: 0;
-
-    border-left:
-        140px solid transparent;
-
-    border-right:
-        140px solid transparent;
-
-    border-top:
-        95px solid #242424;
-
-    transform-origin: top center;
-
-    transition:
-        transform 0.9s ease;
-
-    z-index: 4;
-}
-
-
-.envelope.open .envelope-flap {
-    transform:
-        rotateX(180deg);
-}
-
-
-/* ========================= */
-/* LETTER TEXT */
-/* ========================= */
-
-.letter-text {
-
-    max-width: 600px;
-
-    margin: 30px auto 0;
-
-    opacity: 0;
-
-    transform:
-        translateY(25px);
-
-    transition:
-        opacity 1.2s ease,
-        transform 1.2s ease;
-
-    pointer-events: none;
-}
-
-
-.letter-text.visible {
+    padding:
+        15px 28px;
 
     opacity: 1;
 
+    transform: translateY(0);
+
+    transition:
+        transform .45s cubic-bezier(.22,1,.36,1),
+        box-shadow .45s ease,
+        background .45s ease,
+        opacity .4s ease;
+}
+
+
+/* Arrow */
+
+.memories-continue-button span {
+
+    display: inline-block;
+
+    font-size: 18px;
+
+    transition:
+        transform .4s cubic-bezier(.22,1,.36,1);
+}
+
+
+/* Hover */
+
+.memories-continue-button:hover {
+
     transform:
-        translateY(0);
+        translateY(-4px);
 
-    pointer-events: auto;
+    box-shadow:
+        0 15px 40px
+        rgba(255,255,255,.16);
 }
 
 
-.letter-text p {
+.memories-continue-button:hover span {
 
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    font-size: 22px;
-
-    line-height: 1.8;
-
-    color:
-        rgba(255, 255, 255, 0.82);
-
-    margin-bottom: 25px;
+    transform:
+        translateX(5px);
 }
 
 
-.letter-signature {
+/* Click */
 
-    color:
-        rgba(255, 130, 170, 0.9);
+.memories-continue-button:active {
 
-    font-size: 20px !important;
+    transform:
+        scale(.96);
 }
 
 
-/* ========================= */
-/* MOBILE LETTER */
-/* ========================= */
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
 @media (max-width: 600px) {
 
-    .letter-content h2 {
-        font-size: 42px;
+    .memories-next {
+
+        margin:
+            10px auto 80px;
+
+        padding:
+            15px 0 30px;
     }
 
-    .envelope {
-        width: 240px;
-        height: 155px;
-    }
+    .memories-continue-button {
 
-    .envelope-flap {
-        border-left-width: 120px;
-        border-right-width: 120px;
-        border-top-width: 80px;
-    }
+        min-width: 145px;
 
-    .letter-text p {
-        font-size: 19px;
+        padding:
+            14px 25px;
     }
 
 }
