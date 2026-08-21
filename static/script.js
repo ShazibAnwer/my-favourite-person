@@ -388,17 +388,17 @@ const things = [
 
     "The way you explain things so cutely.",
 
-    "The way you tease me — especially the little whoosh in my ear and those playful stickers.",
+    "The way you tease me — especially the little whoosh in my ear.",
 
-    "The way you don't listen when I'm saying something... or just act like you're listening. 😅",
+    "The way you don't listen when I'm saying something.. or just act like you're listening. 😅",
 
-    "Your little reactions.",
+    "Your little reactions.😁",
 
     "The way you can make me smile without even trying.",
 
-    "Your random messages.",
+    "Your random messages , voice notes. 😊",
 
-    "Your voice.",
+    "Your voice. ✨",
 
     "The little things you do without realizing they're cute.",
 
